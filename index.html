@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Floating hearts container -->
+    <div id="floating-hearts"></div>
+
+    <!-- Music Button -->
+    <button id="music-btn" class="music-btn" aria-label="Play Music">
+        <svg id="music-icon-play" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-play">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <svg id="music-icon-pause" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="feather feather-pause">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+    </button>
+    <audio id="bg-music" loop>
+        <source src="assets/audio/birthday-song.m4a" type="audio/mp4">
+    </audio>
+
+    <div class="container">
+
+        <!-- Screen 1: Secret Introduction -->
+        <section id="screen-1" class="screen active">
+            <div class="content flex-center">
+                <h1 class="fade-in-text slow-reveal" id="intro-greeting">Hey Laddu... 👀</h1>
+                <p class="fade-in-text delayed-reveal-1">I made something for you.</p>
+                <div class="gift-icon bounce-animation fade-in-text delayed-reveal-2">🎁</div>
+                <button class="btn fade-in-text delayed-reveal-3" onclick="nextScreen(2)">Open Your Surprise ✨</button>
+            </div>
+        </section>
+
+        <!-- Screen 2: The day you were born -->
+        <section id="screen-2" class="screen">
+            <div class="content flex-center date-card-container">
+                <div class="date-card glass-panel fade-in-up">
+                    <h2 class="date-display" id="birth-date-display">20 • 09 • 2003</h2>
+                    <p class="subtitle">The day you came into this world.</p>
+                    <h3 class="name-display" id="full-name-display">Kushwanth Reddy</h3>
+                    <p class="day-display">Saturday</p>
+                </div>
+                <button class="icon-btn mt-2 fade-in-up delayed" onclick="nextScreen(3)">↓</button>
+            </div>
+        </section>
+
+        <!-- Screen 3: Moon on the day he was born -->
+        <section id="screen-3" class="screen">
+            <div class="content flex-center moon-container">
+                <div class="glass-panel text-center fade-in-up">
+                    <img src="assets/images/moon.png" alt="Waning Crescent Moon" class="moon-img glow-effect">
+                    <h3 class="moon-phase">Waning Crescent</h3>
+                    <p class="date-small">20 September 2003</p>
+                    <p class="poetic-text">"On the night you were born, the moon was watching too. 🌙"</p>
+                </div>
+                <button class="icon-btn mt-2 fade-in-up delayed" onclick="nextScreen(4)">↓</button>
+            </div>
+        </section>
+
+        <!-- Screen 4: How long you have been here -->
+        <section id="screen-4" class="screen">
+            <div class="content flex-center counter-container">
+                <div class="glass-panel text-center fade-in-up">
+                    <h2>You've been here for...</h2>
+                    <div class="time-grid" id="birth-counter">
+                        <div class="time-box"><span id="b-years">0</span> <small>YEARS</small></div>
+                        <div class="time-box"><span id="b-months">0</span> <small>MONTHS</small></div>
+                        <div class="time-box"><span id="b-days">0</span> <small>DAYS</small></div>
+
+                        <div class="time-box mt-1"><span id="b-hours">00</span> <small>HOURS</small></div>
+                        <div class="time-box mt-1"><span id="b-mins">00</span> <small>MINUTES</small></div>
+                        <div class="time-box mt-1"><span id="b-secs">00</span> <small>SECONDS</small></div>
+                    </div>
+                    <p class="sub-text mt-2">and counting... ✨</p>
+                </div>
+                <button class="icon-btn mt-2 fade-in-up delayed" onclick="nextScreen(5)">↓</button>
+            </div>
+        </section>
+
+        <!-- Screen 5: The day I got to know you -->
+        <section id="screen-5" class="screen">
+            <div class="content flex-center">
+                <p class="fade-in-text">Then came another important date...</p>
+                <div class="date-card glass-panel mt-1 fade-in-up delayed-reveal-1">
+                    <h2 class="date-display" id="first-known-display">01 • 08 • 2021</h2>
+                    <p class="subtitle mt-1">The day I got to know you. ❤️</p>
+                </div>
+                <button class="icon-btn mt-2 fade-in-up delayed-reveal-2" onclick="nextScreen(6)">↓</button>
+            </div>
+        </section>
+
+        <!-- Screen 6: Our time counter -->
+        <section id="screen-6" class="screen">
+            <div class="content flex-center counter-container">
+                <div class="glass-panel text-center fade-in-up">
+                    <h2 class="romantic-title">Since I got to know you...</h2>
+                    <div class="time-row mt-2">
+                        <span id="k-years">0</span> Years &nbsp;
+                        <span id="k-months">0</span> Months &nbsp;
+                        <span id="k-days">0</span> Days
+                    </div>
+                    <div class="time-row clock-style mt-1">
+                        <span id="k-hours">00</span> Hours :
+                        <span id="k-mins">00</span> Minutes :
+                        <span id="k-secs">00</span> Seconds
+                    </div>
+                    <p class="sub-text mt-2">and the clock is still ticking... ♾️</p>
+                </div>
+                <button class="icon-btn mt-2 fade-in-up delayed" onclick="nextScreen(7)">↓</button>
+            </div>
+        </section>
+
+        <!-- Screen 7: Birthday 2026 -->
+        <section id="screen-7" class="screen">
+            <div class="content flex-center bday-container" id="bday-celebration">
+                <p class="fade-in-text small-date">20 September 2026</p>
+                <h1 class="bday-title pop-in delayed-reveal-1">🎂 HAPPY BIRTHDAY,<br><span
+                        id="bday-nickname">LADDU</span>! 🎂</h1>
+                <h2 class="name-display fade-in-text delayed-reveal-2" id="bday-name">Kushwanth Reddy</h2>
+
+                <button class="btn mt-2 fade-in-text delayed-reveal-3" onclick="nextScreen(8)">See More ✨</button>
+            </div>
+        </section>
+
+        <!-- Screen 8: Photo Memories -->
+        <section id="screen-8" class="screen scrollable">
+            <div class="content">
+                <h2 class="section-title text-center mt-2 fade-in-up">Our Memories ✨</h2>
+                <div class="photo-gallery mt-2 fade-in-up delayed">
+                    <div class="photo-card"
+                        onclick="openLightbox('assets/images/photo1.jpg', 'One of my favorite memories ❤️')">
+                        <div class="img-wrapper"><img src="assets/images/photo1.jpg" alt="Memory 1" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="photo-card" onclick="openLightbox('assets/images/photo2.jpeg', 'That smile ✨')">
+                        <div class="img-wrapper"><img src="assets/images/photo2.jpeg" alt="Memory 2" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="photo-card"
+                        onclick="openLightbox('assets/images/photo3.jpeg', 'A moment worth remembering.')">
+                        <div class="img-wrapper"><img src="assets/images/photo3.jpeg" alt="Memory 3" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="photo-card" onclick="openLightbox('assets/images/photo4.jpeg', 'Always special 💕')">
+                        <div class="img-wrapper"><img src="assets/images/photo4.jpeg" alt="Memory 4" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="photo-card" onclick="openLightbox('assets/images/photo5.jpeg', 'Precious times 🌟')">
+                        <div class="img-wrapper"><img src="assets/images/photo5.jpeg" alt="Memory 5" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="photo-card"
+                        onclick="openLightbox('assets/images/photo6.jpeg', 'And many more to come! ♾️')">
+                        <div class="img-wrapper"><img src="assets/images/photo6.jpeg" alt="Memory 6" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-2 pb-2 flex-center" style="min-height: auto; padding: 2rem;">
+                    <button class="btn" onclick="nextScreen(9)">Next 💌</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 9: A Personal Letter -->
+        <section id="screen-9" class="screen scrollable">
+            <div class="content flex-center letter-container">
+                <div class="glass-panel letter-paper fade-in-up">
+                    <h2 class="handwritten-title text-center">A Little Something For You 💌</h2>
+                    <div class="typewriter-container mt-2">
+                        <p id="personal-letter"></p>
+                    </div>
+                </div>
+                <button class="icon-btn mt-2 fade-in-up delayed" onclick="nextScreen(10)">↓</button>
+            </div>
+        </section>
+
+        <!-- Screen 10: 22 Languages -->
+        <section id="screen-10" class="screen scrollable">
+            <div class="content flex-center languages-container">
+                <h2 class="romantic-title text-center fade-in-up mb-2" style="font-size: 2.2rem; color: #ff6b81;">22
+                    Ways to Say It... 💕</h2>
+                <div class="lang-grid fade-in-up delayed">
+                    <span class="lang-tag" data-original="I love you❤️" onclick="toggleLang(this)">I love you❤️</span>
+                    <span class="lang-tag" data-original="నేను నిన్ను ప్రేమిస్తున్నాను❤️"
+                        onclick="toggleLang(this)">నేను నిన్ను ప్రేమిస్తున్నాను❤️</span>
+                    <span class="lang-tag" data-original="मैं तुमसे प्यार करता हूँ❤️" onclick="toggleLang(this)">मैं
+                        तुमसे प्यार करता हूँ❤️</span>
+                    <span class="lang-tag" data-original="நான் உன்னை காதலிக்கிறேன்❤️" onclick="toggleLang(this)">நான்
+                        உன்னை காதலிக்கிறேன்❤️</span>
+                    <span class="lang-tag" data-original="Te amo 🇪🇸❤️" onclick="toggleLang(this)">Te amo 🇪🇸❤️</span>
+                    <span class="lang-tag" data-original="Je t'aime 🇫🇷❤️" onclick="toggleLang(this)">Je t'aime
+                        🇫🇷❤️</span>
+                    <span class="lang-tag" data-original="Ich liebe dich 🇩🇪❤️" onclick="toggleLang(this)">Ich liebe
+                        dich 🇩🇪❤️</span>
+                    <span class="lang-tag" data-original="Ti amo 🇮🇹❤️" onclick="toggleLang(this)">Ti amo 🇮🇹❤️</span>
+                    <span class="lang-tag" data-original="愛してる 🇯🇵❤️" onclick="toggleLang(this)">愛してる 🇯🇵❤️</span>
+                    <span class="lang-tag" data-original="사랑해 🇰🇷❤️" onclick="toggleLang(this)">사랑해 🇰🇷❤️</span>
+                    <span class="lang-tag" data-original="我爱你 🇨🇳❤️" onclick="toggleLang(this)">我爱你 🇨🇳❤️</span>
+                    <span class="lang-tag" data-original="Я тебя люблю 🇷🇺❤️" onclick="toggleLang(this)">Я тебя люблю
+                        🇷🇺❤️</span>
+                    <span class="lang-tag" data-original="أنا أحبك 🇦🇪❤️" onclick="toggleLang(this)">أنا أحبك
+                        🇦🇪❤️</span>
+                    <span class="lang-tag" data-original="Eu te amo 🇧🇷❤️" onclick="toggleLang(this)">Eu te amo
+                        🇧🇷❤️</span>
+                    <span class="lang-tag" data-original="Ik hou van jou 🇳🇱❤️" onclick="toggleLang(this)">Ik hou van
+                        jou 🇳🇱❤️</span>
+                    <span class="lang-tag" data-original="Σ' αγαπώ 🇬🇷❤️" onclick="toggleLang(this)">Σ' αγαπώ
+                        🇬🇷❤️</span>
+                    <span class="lang-tag" data-original="Jag älskar dig 🇸🇪❤️" onclick="toggleLang(this)">Jag älskar
+                        dig 🇸🇪❤️</span>
+                    <span class="lang-tag" data-original="Seni seviyorum 🇹🇷❤️" onclick="toggleLang(this)">Seni
+                        seviyorum 🇹🇷❤️</span>
+                    <span class="lang-tag" data-original="Kocham cię 🇵🇱❤️" onclick="toggleLang(this)">Kocham cię
+                        🇵🇱❤️</span>
+                    <span class="lang-tag" data-original="Aku cinta kamu 🇮🇩❤️" onclick="toggleLang(this)">Aku cinta
+                        kamu 🇮🇩❤️</span>
+                    <span class="lang-tag" data-original="Em yêu anh 🇻🇳❤️" onclick="toggleLang(this)">Em yêu anh
+                        🇻🇳❤️</span>
+                    <span class="lang-tag" data-original="Nakupenda 🇰🇪❤️" onclick="toggleLang(this)">Nakupenda
+                        🇰🇪❤️</span>
+                </div>
+                <button class="icon-btn mt-2 fade-in-up delayed-reveal-2" onclick="nextScreen(11)">↓</button>
+            </div>
+        </section>
+
+        <!-- Screen 11: Little Interactive Surprises -->
+        <section id="screen-11" class="screen scrollable">
+            <div class="content flex-center surprises-container">
+                <h2 class="section-title text-center fade-in-up mb-2">Tap to open 🎁</h2>
+
+                <div class="interactive-card glass-panel fade-in-up delayed-reveal-1" onclick="toggleCard(this)">
+                    <div class="card-front">Something I Like About You 💕</div>
+                    <div class="card-back" id="surprise-1">Your amazing smile and your cute eyes👀!</div>
+                </div>
+
+                <div class="interactive-card glass-panel mt-1 fade-in-up delayed-reveal-2" onclick="toggleCard(this)">
+                    <div class="card-front">A Little Wish For You ✨</div>
+                    <div class="card-back" id="surprise-2">I wish you endless joy and success in everything you do.
+                    </div>
+                </div>
+
+                <div class="interactive-card glass-panel mt-1 fade-in-up delayed-reveal-3" onclick="toggleCard(this)">
+                    <div class="card-front">One More Thing... 👀</div>
+                    <div class="card-back" id="surprise-3">I'm so glad I got to know you. You are truly special!</div>
+                </div>
+
+                <button class="icon-btn mt-2 fade-in-up delayed-reveal-4" onclick="nextScreen(12)">↓</button>
+            </div>
+        </section>
+
+        <!-- Screen 12: Final Message -->
+        <section id="screen-12" class="screen">
+            <div class="content flex-center final-container text-center">
+                <p class="fade-in-text subtitle" style="color: #666;">Before you go...</p>
+                <p class="fade-in-text delayed-reveal-1 mt-1 section-title">I hope this little surprise made you smile.
+                    ❤️</p>
+                <h2 class="fade-in-text delayed-reveal-2 mt-2">Happy Birthday, <span id="final-nickname">Laddu</span> 🎂
+                </h2>
+                <p class="fade-in-text delayed-reveal-3 mt-1"
+                    style="font-size: 1.5rem; line-height: 1.5; color: #ff6b81;">
+                    Keep smiling. Keep being you.<br><br>
+                    <span style="font-family: var(--font-hand); font-size: 2.2rem;">I love you more,<br>I miss you more.
+                        ❤️</span>
+                </p>
+
+                <div class="made-with-love fade-in-text delayed-reveal-4 mt-2">
+                    Made with <span class="heart-beat">❤️</span> just for you.
+                </div>
+                <button class="btn mt-2 fade-in-text delayed-reveal-4" onclick="nextScreen(1)">Start Again ✨</button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content glass-panel">
+            <button class="close-btn" onclick="closeLightbox(event)">✕</button>
+            <img id="lightbox-img" src="" alt="Memory">
+            <p id="lightbox-caption" class="caption"></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
